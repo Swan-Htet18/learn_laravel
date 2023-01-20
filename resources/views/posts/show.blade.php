@@ -3,7 +3,7 @@
     <main class="max-w-6xl mx-auto mt-10 lg:mt-20 space-y-6 ">
         <article class="max-w-4xl mx-auto lg:grid lg:grid-cols-12 gap-x-10">
             <div class="col-span-4 lg:text-center lg:pt-14 mb-10">
-                <img src="/images/illustration-1.png" alt="" class="rounded-xl" />
+                <img src="{{ asset('storage/'. $post->thumbnail) }}" alt="" class="rounded-xl" />
 
                 <p class="mt-4 block text-gray-400 text-xs">
                     Published <time>{{$post->created_at->diffForHumans()}}</time>
@@ -68,6 +68,10 @@
                     <div class="mt-4">
                         <textarea name="body" class="w-full text-sm focus:outline-none focus:ring" rows="5"
                             placeholder="Quick! Think of something to say.."></textarea>
+
+                        @error('body')
+                        <span class="text-red-500 text-sm">{{ message }}</span>
+                        @enderror
                     </div>
                     <div class="flex justify-end  mt-6  border-t border-gray-200 pt-6">
                         <button type="submit"
